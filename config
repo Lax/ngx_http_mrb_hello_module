@@ -1,0 +1,12 @@
+ngx_addon_name=ngx_http_mrb_hello_module
+mruby_root=$ngx_addon_dir/mruby
+
+HTTP_MODULES="$HTTP_MODULES ngx_http_mrb_hello_module"
+NGX_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_addon_dir/ngx_http_mrb_hello_module.c"
+
+CORE_LIBS="$CORE_LIBS $mruby_root/build/host/mrblib/mrblib.o $mruby_root/build/host/lib/libmruby.a -lm"
+CORE_INCS="$CORE_INCS $mruby_root/src $mruby_root/include"
+
+if [ -f $ngx_addon_dir/mrbgems_config ]; then
+    . $ngx_addon_dir/mrbgems_config
+fi
