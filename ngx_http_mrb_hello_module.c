@@ -85,7 +85,7 @@ ngx_http_mrb_hello_handler(ngx_http_request_t *r)
     mrb_value v;
     int ngx_hello_string_len;
 
-    v = mrb_load_string_cxt(mrb, "config=\"Current Time [#{Time.now}]\"; config;", cxt);
+    v = mrb_load_string_cxt(mrb, "result=\"Current Time [#{Time.now}]\"; result;", cxt);
     ngx_hello_string = (u_char *)mrb_str_to_cstr(mrb, v);
     ngx_hello_string_len = mrb_fixnum(mrb_funcall(mrb, v, "size", 0, 0));
 
